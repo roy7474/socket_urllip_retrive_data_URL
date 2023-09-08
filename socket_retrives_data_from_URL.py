@@ -9,6 +9,7 @@ count = 0
 user_file = input('Enter the URL of the website that you would like to use: ')
 try:
     fhand =urllib.request.urlopen(user_file) # retrieving the document from a URL
+    
 except:
     print("There was an error while trying to open this file. Please try again! ")
 
