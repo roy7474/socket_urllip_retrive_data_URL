@@ -37,20 +37,18 @@ ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
-url = 'https://online.dr-chuck.com/'
-response = urllib.request.urlopen(url)
-html = response.read()
+url = 'https://en.wikipedia.org/wiki/History_of_Python'
+html = urllib.request.urlopen(url, context = ctx).read()
+#html = response.read()
 #parse the html
 soup = BeautifulSoup(html, 'html.parser')
 tags = soup('p')
 counts = 0
 
 for tag in tags:
-    print('Tag: ', tag)
-    counts +=1
-paragraphs = soup.find_all(['p', 'div'])
-num_paragraphs = len(paragraphs)
+    counts += 1
+#paragraphs = soup.find_all(['p', 'div'])
+#num_paragraphs = len(paragraphs)
 
-print(soup)
 print("The number of paragraphs tags are: ", counts)
 
