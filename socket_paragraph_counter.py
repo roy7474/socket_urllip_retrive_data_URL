@@ -1,3 +1,9 @@
+import urllib.request, urllib.parse, urllib.error
+from bs4 import BeautifulSoup
+import ssl
+
+
+
 '''
 124 Change the urllinks.py program to extract and count paragraph (p) tags from the retrieved HTML 
 document and display the count of the paragraphs as the output of your program. 
@@ -24,14 +30,13 @@ for line in fhand:
         print(line.decode().strip()) #displaying only 3000 characters
 print('The total number of character is:', count)
 
+https://en.wikipedia.org/wiki/History_of_computing_hardware
+
+https://en.wikipedia.org/wiki/History_of_Python
 
 '''
 
 
-
-import urllib.request, urllib.parse, urllib.error
-from bs4 import BeautifulSoup
-import ssl
 
 ctx = ssl.create_default_context()
 ctx.check_hostname = False
@@ -39,16 +44,17 @@ ctx.verify_mode = ssl.CERT_NONE
 
 url = 'https://en.wikipedia.org/wiki/History_of_Python'
 html = urllib.request.urlopen(url, context = ctx).read()
-#html = response.read()
+
 #parse the html
 soup = BeautifulSoup(html, 'html.parser')
 tags = soup('p')
 counts = 0
-
 for tag in tags:
     counts += 1
+
 #paragraphs = soup.find_all(['p', 'div'])
 #num_paragraphs = len(paragraphs)
+#print(num_paragraphs)
 
 print("The number of paragraphs tags are: ", counts)
 
